@@ -1,4 +1,7 @@
+import 'package:e_commerce/common/helper/navigator/app_navigator.dart';
+import 'package:e_commerce/common/widgets/appbar/basic_app_bar.dart';
 import 'package:e_commerce/common/widgets/buttons/basic_app_button.dart';
+import 'package:e_commerce/presentation/auth/pages/enter_password.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +11,9 @@ class SigninPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const BasicAppbar(hideBack: true),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 80),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -44,7 +48,9 @@ class SigninPage extends StatelessWidget {
 
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
-      onPressed: () {},
+      onPressed: () {
+        AppNavigator.push(context, const EnterPasswordPage());
+      },
       title: 'Continue',
     );
   }

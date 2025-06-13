@@ -1,17 +1,16 @@
 import 'package:e_commerce/common/helper/navigator/app_navigator.dart';
 import 'package:e_commerce/common/widgets/appbar/basic_app_bar.dart';
 import 'package:e_commerce/common/widgets/buttons/basic_app_button.dart';
-import 'package:e_commerce/presentation/auth/pages/forgot_password.dart';
-import 'package:flutter/gestures.dart';
+import 'package:e_commerce/presentation/auth/pages/enter_password.dart';
 import 'package:flutter/material.dart';
 
-class EnterPasswordPage extends StatelessWidget {
-  const EnterPasswordPage({super.key});
+class ForgotPasswordPage extends StatelessWidget {
+  const ForgotPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: BasicAppbar(),
+      appBar: const BasicAppbar(),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 40),
         child: Column(
@@ -19,11 +18,9 @@ class EnterPasswordPage extends StatelessWidget {
           children: [
             _signinText(context),
             const SizedBox(height: 20),
-            _passwordField(context),
+            _emailField(context),
             const SizedBox(height: 20),
             _continueButton(context),
-            const SizedBox(height: 20),
-            _forgotPassword(context),
           ],
         ),
       ),
@@ -32,7 +29,7 @@ class EnterPasswordPage extends StatelessWidget {
 
   Widget _signinText(BuildContext context) {
     return const Text(
-      'Sign in',
+      'Forgot password?',
       style: TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.bold,
@@ -40,38 +37,18 @@ class EnterPasswordPage extends StatelessWidget {
     );
   }
 
-  Widget _passwordField(BuildContext context) {
+  Widget _emailField(BuildContext context) {
     return const TextField(
-      decoration: InputDecoration(hintText: 'Enter password'),
+      decoration: InputDecoration(hintText: 'Enter e-mail'),
     );
   }
 
   Widget _continueButton(BuildContext context) {
     return BasicAppButton(
-      onPressed: () {},
+      onPressed: () {
+        AppNavigator.push(context, const EnterPasswordPage());
+      },
       title: 'Continue',
-    );
-  }
-
-  Widget _forgotPassword(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          const TextSpan(
-            text: 'Forgot password? ',
-          ),
-          TextSpan(
-            text: 'Reset',
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                AppNavigator.push(context, const ForgotPasswordPage());
-              },
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
